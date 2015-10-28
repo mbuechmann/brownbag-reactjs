@@ -1,11 +1,13 @@
 var express = require('express');
 var router = express.Router();
 
-var ratings = [];
+var ratings = [
+  {text: 'Good UI! Many alert choices.', stars: 5},
+  {text: 'Running Great! No crashes', stars: 5}
+];
 
 /* GET ratings listing. */
 router.get('/', function(req, res, next) {
-  //res.send('respond with a resource');
   res.json({
     ratings: ratings
   });
