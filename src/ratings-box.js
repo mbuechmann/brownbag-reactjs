@@ -4,12 +4,16 @@
   var React = require('react');
   var $ = require('jquery-browserify');
   var Rating = require('./rating');
+  var RatingForm = require('./rating-form');
 
   var RatingsBox = React.createClass({
     getInitialState: function () {
       return {ratings: []};
     },
     componentDidMount: function () {
+      this.loadRatings();
+    },
+    loadRatings: function () {
       $.ajax({
         url: this.props.url,
         dataType: 'json',
@@ -30,8 +34,10 @@
       this.state.ratings.forEach(function (rating) {
         sum += rating.stars;
       });
-
       return Math.floor(sum / this.state.ratings.length);
+    },
+    ratingSent: function () {
+      this.loadRatings();
     },
     render: function () {
       if (this.state.ratings.length === 0) {
@@ -48,6 +54,8 @@
               return(<Rating key={ 'rating' + i++ } rating={ rating } />);
             })
           }
+          <hr />
+          <RatingForm url={ this.props.url } ratingSent={ this.ratingSent }/>
         </div>
       );
     }
