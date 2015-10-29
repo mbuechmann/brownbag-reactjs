@@ -5,7 +5,7 @@
   var $ = require('jquery-browserify');
   var Rating = require('./rating');
 
-  var Ratings = React.createClass({
+  var RatingsBox = React.createClass({
     getInitialState: function () {
       return {ratings: []};
     },
@@ -53,5 +53,5 @@
     }
   });
 
-  module.exports = Ratings;
+  module.exports = RatingsBox;
 })();

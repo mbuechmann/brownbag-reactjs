@@ -3,11 +3,11 @@
 
   var React = require('react');
   var ReactDOM = require('react-dom');
-  var Ratings = require('./ratings');
+  var RatingsBox = require('./ratings-box');
 
   $(function () {
     ReactDOM.render(
-      <Ratings url="/ratings" />,
+      <RatingsBox url="/ratings" />,
       document.getElementById('ratings')
     );
   });
