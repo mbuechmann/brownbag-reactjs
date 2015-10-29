@@ -16,9 +16,10 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
   ratings.push({
     text: req.body.text,
-    stars: req.body.stars
+    stars: parseInt(req.body.stars)
   });
-  res.sendStatus(201);
+  res.statusCode = 201;
+  res.json({success: true});
 });
 
 module.exports = router;
