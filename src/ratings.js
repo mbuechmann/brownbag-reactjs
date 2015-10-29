@@ -3,6 +3,7 @@
 
   var React = require('react');
   var $ = require('jquery-browserify');
+  var Rating = require('./rating');
 
   var Ratings = React.createClass({
     getInitialState: function () {
@@ -37,16 +38,16 @@
         return(<p>Sorry, no ratings yet</p>);
       }
 
-      var ratingList = this.state.ratings.map(function (rating) {
-        return(<li>{ rating.stars } stars:<br /> { rating.text }</li>);
-      });
+      var i = 0;
       return(
         <div>
           <h1>Rating { this.averageRating() }</h1>
           <p>Based on { this.state.ratings.length } reviews</p>
-          <ul>
-            { ratingList }
-          </ul>
+          {
+            this.state.ratings.map(function (rating) {
+              return(<Rating key={ 'rating' + i++ } rating={ rating } />);
+            })
+          }
         </div>
       );
     }
