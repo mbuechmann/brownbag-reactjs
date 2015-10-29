@@ -20,12 +20,10 @@
         type: 'POST',
         data: rating,
         success: function(data) {
-          console.log('aa');
           this.props.ratingSent();
           // notify container
         }.bind(this),
         error: function(xhr, status, err) {
-          console.log('bb');
           console.error(xhr, status, err.toString());
         }.bind(this)
       });
